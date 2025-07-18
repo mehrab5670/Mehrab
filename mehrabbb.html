@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ورود با ایمیل</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      direction: rtl;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+      margin: 40px auto 20px;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      margin: 12px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 0;
+      width: 100%;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+      min-height: 40px;
+    }
+    #backButton {
+      background-color: #2196F3;
+    }
+    #backButton:hover {
+      background-color: #0b7dda;
+    }
+    #nextButton {
+      background-color: #FF9800;
+      margin-top: 10px;
+      display: none;
+    }
+    #nextButton:hover {
+      background-color: #e68a00;
+    }
+    #showBananaButton {
+      background-color: #fbc02d;
+      margin-top: 15px;
+      display: none;
+      color: #5d4037;
+      font-weight: bold;
+    }
+    #showBananaButton:hover {
+      background-color: #f9a825;
+    }
+    #bananaImage {
+      margin-top: 20px;
+      max-width: 100%;
+      height: auto;
+      display: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .footer-link {
+      text-align: center;
+      margin: 30px auto;
+      font-weight: bold;
+    }
+    .footer-link a {
+      color: #4caf50;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .footer-link a:hover {
+      color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    سازنده سایت: mehrab
+  </div>
+  <div class="container">
+    <h2>ورود با ایمیل</h2>
+    <form id="emailForm">
+      <input type="email" id="emailInput" placeholder="ایمیل خود را وارد کنید" required />
+      <button type="submit">ورود</button>
+    </form>
+    <div id="message" class="message"></div>
+    <button id="backButton" style="display:none;">بازگشت</button>
+    <button id="nextButton">مرحله بعدی</button>
+    <button id="showBananaButton">میخوای موزو ببینی کلیک کن</button>
+    <img id="bananaImage" src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg" alt="موز" />
+  </div>
+
+  <div class="footer-link">
+    <a href="https://mehrab-site.example" target="_blank">رفتن به سایت مهراب</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('emailInput');
+    const message = document.getElementById('message');
+    const backButton = document.getElementById('backButton');
+    const nextButton = document.getElementById('nextButton');
+    const showBananaButton = document.getElementById('showBananaButton');
+    const bananaImage = document.getElementById('bananaImage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = emailInput.value.trim();
+
+      if(email && email.includes('@')) {
+        message.style.color = 'green';
+        message.textContent = "شما با موفقیت وارد سایت شدید";
+        form.style.display = 'none';
+        backButton.style.display = 'block';
+        nextButton.style.display = 'block';
+        showBananaButton.style.display = 'none';
+        bananaImage.style.display = 'none';
+      } else {
+        message.style.color = 'red';
+        message.textContent = "لطفاً یک ایمیل معتبر وارد کنید";
+      }
+    });
+
+    backButton.addEventListener('click', function() {
+      message.textContent = '';
+      backButton.style.display = 'none';
+      nextButton.style.display = 'none';
+      showBananaButton.style.display = 'none';
+      bananaImage.style.display = 'none';
+      form.style.display = 'block';
+      emailInput.value = '';
+      emailInput.focus();
+    });
+
+    nextButton.addEventListener('click', function() {
+      message.style.color = 'orange';
+      message.textContent = "سازنده سایت مهراب";
+      nextButton.style.display = 'none';
+      backButton.style.display = 'none';
+      showBananaButton.style.display = 'block';
+      bananaImage.style.display = 'none';
+    });
+
+    showBananaButton.addEventListener('click', function() {
+      showBananaButton.style.display = 'none';
+      message.textContent = '';
+      bananaImage.style.display = 'block';
+    });
+  </script>
+</body>
+</html> 
+<div class="footer-link">
+  <a href="https://www.google.com/search?q=سایت+mehrab" target="_blank">جستجوی سایت مهراب در گوگل</a>
+</div>
